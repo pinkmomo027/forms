@@ -1,0 +1,125 @@
+body {
+	background-image: url('images/background.jpg');
+}
+
+.side {
+	position: absolute;
+	top: 80px;
+	left: 10px;
+}
+
+.side button {
+	margin-bottom: 20px;
+}
+
+.container {
+	position: relative;
+	width: 600px;
+	margin: auto;
+	margin-top: 50px;
+
+	border: 1px solid grey;
+	border-radius: 5px;
+	box-shadow: inset 0 0 6px skyblue;
+	padding: 10px;
+
+	background-color: white;
+}
+
+.hidden {
+	display: none;
+}
+
+.underlay {
+	z-index: -1;
+}
+
+.overlay {
+	z-index: 100;
+}
+
+.overlay-50 {
+	z-index: 50;
+}
+
+span.detail-link {
+	text-decoration: underline;
+}
+span.detail-link:hover {
+	cursor: pointer;
+}
+
+.error-container {
+	position: absolute;
+	width: 400px;
+	/*height: 300px;*/
+	top: 50px;
+	left: 100px;
+
+	border: 1px solid red;
+	border-radius: 5px;
+	background-color: white;
+
+	-webkit-box-shadow: 0px 0px 20px 2px rgba(79,29,42,1);
+	-moz-box-shadow: 0px 0px 20px 2px rgba(79,29,42,1);
+	box-shadow: 0px 0px 20px 2px rgba(79,29,42,1);
+
+	padding: 10px;
+}
+
+.error-container a:hover {
+	cursor: pointer;
+}
+
+.empty-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 0.7;
+}
+
+.form .item {
+	padding: 5px;
+}
+
+.form .item label {
+	display: inline-block;
+	width: 150px;
+	vertical-align: top;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-left + .pull-left {
+	margin-left: 10px;
+}
+
+.pull-right {
+	float: right;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.button-group {
+	margin-top: 30px;
+}
+
+.button-group button {
+	height: 30px;
+	width: 80px;
+}
+
+.button-group button:hover {
+	cursor: pointer;
+}
+
+span.required {
+	color: red;
+}
