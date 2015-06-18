@@ -1,0 +1,225 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="hw1.css">
+		<script src="hw1.js"></script>
+	</head>
+
+	<body>
+		<div class='side'>
+
+			<button id="fun1">
+				<a href="http://www.google.com" target='_blank' style="text-decoration:none;">Bring me to Google!<a>
+			</button>
+			<div class="clearfix"></div>
+			<button id="fun2">
+				Bring me to Report!
+			</button>
+			<div class="clearfix"></div>
+			<button id="fun3">
+				Bring me to Form!
+			</button>
+		</div>
+		<div class='container'>
+			<div class='error-container underlay' id='error'>
+				<a class='pull-right' id='close-error'>close [x]</a>
+				<h3>Validation Errors</h3>
+				<div id="errors">
+
+				</div>
+			</div>
+			<div class='empty-container underlay' id='empty-container'>
+			</div>
+			<div class='form' id='form1'>
+				<h3>Basic Info</h3>
+				<div class="item">
+					<label>First Name :<span class="required">*</span></label>
+					<span>
+						<input id="first-name" type="text" name="first-name" size="30"></input>
+					</span>
+				</div>
+				<div class="item">
+					<label>Last Name :<span class="required">*</span></label>
+					<span>
+						<input id="last-name" type="text" name="last-name" size="30"></input>
+					</span>
+				</div>
+				<div class="item">
+					<label>Middle Name :</label>
+					<span>
+						<input id="middle-name" type="text" name="middle-name" size="30"></input>
+					</span>
+				</div>
+				<div class="item">
+					<label>Gender :<span class="required">*</span></label>
+					<span>
+						<input type="radio" name="gender" value="male">Male
+						<input type="radio" name="gender" value="female">Female
+						<input type="radio" name="gender" value="other">Prefer not to tell
+					</span>
+				</div>
+				<div class="item">
+					<label>DOB:<span class="required">*</span></label>
+					<span>
+						<input id="dob" type="text" name="dob" size="20"></input>
+						 (Format: 02/20/1990)
+					</span>
+				</div>
+				<div class="item">
+					<label>Age :<span class="required">*</span></label>
+					<span>
+						<input type="radio" name="age" value="< 20"> &lt; 20
+						<input type="radio" name="age" value="21 - 40"> 21 - 40
+						<input type="radio" name="age" value="41 - 60"> 41 - 60
+						<input type="radio" name="age" value="> 60"> &gt; 60
+					</span>
+				</div>
+				<div class="item">
+					<label>Hair Color :<span class="required">*</span></label>
+					<span>
+						<select name="hair-color" id="hair-color">
+						<option value=""  selected="selected"></option>
+						<option value="black">Black</option>
+						<option value="brown">Brown</option>
+						<option value="red">Red</option>
+						<option value="blone">Blond</option>
+						<option value="white">White</option>
+						<option value="other">Other</option>
+						</select>
+					</span>
+				</div>
+				<div class="item">
+					<label>Hair Condition :<span class="required">*</span></label>
+					<span>
+						<input type="checkbox" name="hair-condition" value="dry">Dry
+						<input type="checkbox" name="hair-condition" value="oily">Oily
+						<input type="checkbox" name="hair-condition" value='dyed'>Dyed
+						<input type="checkbox" name="hair-condition" value='natural-color'>Natural Color
+						<input type="checkbox" name="hair-condition" value="curl">Curl
+						<input type="checkbox" name="hair-condition" value="straight">Straight
+					</span>
+				</div>
+				<div class="item">
+					<label>Hair Product used :</label>
+					<span>
+						<input type="checkbox" name="hair-product" value="shampoo">Shampoo
+						<input type="checkbox" name="hair-product" value="conditioner">Conditioner
+						<input type="checkbox" name="hair-product" value='hair-mask'>Hair Mask
+						<input type="checkbox" name="hair-product" value="hair-oil">Hair oil
+						<input type="checkbox" name="hair-product" value="treatment">Other treatment
+					</span>
+				</div>
+				<div class="item">
+					<label>Brands :</label>
+					<span>
+						<input type="checkbox" name="hair-brand" value="tsubaki">Tsubaki
+						<input type="checkbox" name="hair-brand" value="kao">Kao
+						<input type="checkbox" name="hair-brand" value='essential'>Essential
+						<input type="checkbox" name="hair-brand" value="ichikami">Ichikami
+						<input type="checkbox" name="hair-brand" value="Oshima">Oshima
+					</span>
+				</div>
+				<div class="item">
+					<label>Hair Styled :</label>
+					<span>
+						<input type="checkbox" name="hair-style" value="cute">Cute
+						<input type="checkbox" name="hair-style" value="cool">Cool
+						<input type="checkbox" name="hair-style" value='casual'>Casual
+						<input type="checkbox" name="hair-style" value="plaine">Plaine
+						<input type="checkbox" name="hair-style" value="creative">Creative
+					</span>
+				</div>
+				<div class="item">
+					<label>Self Desciprtion :</label>
+					<span>
+						<textarea id='self-description' name="self-description" rows="5" cols="30"></textarea>
+					</span>
+				</div>
+			</div>
+
+			<div class='form hidden' id='form2'>
+				<h3>Hair Products</h3>
+				<div class='item'>
+					<label>Long hair?<span class="required">*</span></label>
+					<span>
+						<input type="radio" name="long-hair" value="yes">Yes
+						<input type="radio" name="long-hair" value="no">No
+						<input type="radio" name="long-hair" value="other">Prefer Not to Tell
+					</span>
+				</div>
+				<div class='item'>
+					<label>Length?</label>
+					<span id="hair-length">
+					</span>
+				</div>
+				<div class='item'>
+					<label>Salon often?<span class="required">*</span></label>
+					<span>
+						<input type="radio" name="salon-often" value="yes">Yes
+						<input type="radio" name="salon-often" value="no">No
+						<input type="radio" name="salon-often" value="other">Prefer Not to Tell
+					</span>
+				</div>
+				<div class='item'>
+					<label>How Often?</label>
+					<span id="hair-salon">
+					</span>
+				</div>
+				<div class='item'>
+					<label>Recommendation: </label>
+					<span>
+						<img src="images/hair-butter.jpg" height="60" width="60">
+						<img src="images/hair-mask.jpg" height="60" width="60">
+						<img src="images/hair-oil.jpg" height="60" width="60">
+						<img src="images/hair-oil-2.jpg" height="60" width="60">
+					</span>
+				</div>
+				<div class="item">
+					<label>Favorite Color :</label>
+					<span>
+						<input id="favorite-color" type="text" name="favorite-color" size="30"></input>
+					</span>
+				</div>
+				<div class="item">
+					<label>Favorite Brand :</label>
+					<span>
+						<input id="favorite-brand" type="text" name="favorite-brand" size="30"></input>
+					</span>
+				</div>
+				<div class="item">
+					<label>Favorite Music :</label>
+					<span>
+						<input id="favorite-music" type="text" name="favorite-music" size="30"></input>
+					</span>
+				</div>
+				<div class="item">
+					<label>Favorite Food :</label>
+					<span>
+						<input id="favorite-food" type="text" name="favorite-food" size="30"></input>
+					</span>
+				</div>
+			</div>
+
+			<div class='form hidden' id='report1'>
+				<h3>Report 1</h3>
+				<h4>Click on the link to view detailed report</h4>
+				<ul id="summary-report">
+
+				</ul>
+			</div>
+
+			<div class='form hidden' id='report2'>
+				<h3>Report 2</h3>
+				<ul id="detail-report">
+				</ul>
+
+			</div>
+
+			<div class='button-group' id='button-group'>
+				<button type="button" class="pull-left" id="go-form1">Go Form1</button>
+				<button type="button" class="pull-left" id="go-report1">Go Report1</button>
+				<button type="button" class="pull-right" id="continue">Continue</button>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+	</body>
+</html>
