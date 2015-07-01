@@ -1,4 +1,18 @@
 var YpEventTracker = (function (yet) {
+	
+	function track() {
+		console.log('track request')
+	}
+
+	function setupListeners () {
+		var btn= document.getElementById('ws');
+		btn.addEventListener('click', track, false);
+	}	
+
+	yet.init = function () {
+		setupListeners();
+	}
+
 
 	// extra query params from this JS file
 	yet.parseParams = function () {
@@ -21,8 +35,8 @@ var YpEventTracker = (function (yet) {
 		return params = parseQuery(queryString);
 	}	
 
-	console.log( 'illwer' );
-	console.log( yet.parseParams("refactor.js?fn=contact_form&furl=/forms/post.php")) ;
+	// console.log( 'illwer' );
+	// console.log( yet.parseParams("refactor.js?fn=contact_form&furl=/forms/post.php")) ;
 
 	//  to send XMLRequest
 	yet.send = function (data) {
@@ -56,3 +70,22 @@ var YpEventTracker = (function (yet) {
 	return yet;
 
 })(YpEventTracker || {});
+
+function run () {
+	 // Non-Microsoft browsers
+	if ( document.addEventListener ) {
+		document.addEventListener("DOMContentLoaded", YpEventTracker.init, false);
+        document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
+
+	 // Microsoft
+	} else if ( document.attachEvent ){
+		document.attachEvent( 'onreadystatechange', function () {
+			if ( document.readyState === "complete" ) {
+				document.detachEvent("onreadystatechange", arguments.callee);
+				YpEventTracker.init();
+			}
+		});
+	}
+}
+
+run();
