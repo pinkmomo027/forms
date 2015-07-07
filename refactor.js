@@ -1,7 +1,24 @@
 var YpEventTracker = (function (yet) {
+
+	var ypSubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
+		ypSubmittable = /^(?:input|select|textarea|keygen)/i;
+
+	// fn: FormName
+	// fid: FormID
+	// fu: FormURL
+	// fb: FormSubmitButton
+
 	
+	// Request image pixel
 	function track() {
-		console.log('track request')
+		var url = "http://127.0.0.1:8080/rp-dataserver/ws/rpConfig";
+		var img = document.createElement('img');
+		img.setAttribute('src', url);
+		img.setAttribute('alt', 'tracking pixel');
+		img.setAttribute('height', '1');
+		img.setAttribute('width', '1');
+		img.className = "trackingImg";
+		console.log("TRACK");
 	}
 
 	function setupListeners () {
@@ -24,8 +41,25 @@ var YpEventTracker = (function (yet) {
 	   return Params;
 	}
 
+	function serialize (FormName) {
+		var params;
+		for(i=0; i<document.FormName.elements.length; i++)
+		{
+		   var fieldName = document.FormName.elements[i].name;
+		   var fieldValue = document.FormName.elements[i].value;
+		   params += fieldName + '=' + fieldValue + '&';
+		}
+		return params;
+	}
+
 
 	yet.init = function () {
+		var params = yet.parseParams();
+		for (selector in params) {
+			yet.selectForms(selector, params[selector])
+		}
+
+		yet.selectForms('fb', 'submit')
 		setupListeners();
 	}
 
@@ -47,15 +81,45 @@ var YpEventTracker = (function (yet) {
 		}
 	}
 
+	yet.selectForms = function (selector, value) {
+		console.log(selector, value);
+		if (value == undefined)
+			return;
+		var form;
+		// Select Form by fname
+		if (selector == 'fn')
+			var form = document.getElementsByName(value)[0];
+
+		// Select Form by ID
+		if (selector == 'fid')
+			var form = document.getElementById(value);
+
+		// Select Form by URL
+		if (selector == 'fu')
+			var form = document.querySelectorAll("[action='" + value + "'']")[0];
+
+		// Select Form by button
+		if (selector == 'fb') {
+			var btn = document.getElementById(value);
+			var parent = btn.parentElement;
+			while(parent != null) {
+				if (parent.tagName == 'FORM')
+					break;
+				else
+					parent = parent.parentElement;
+			}
+			console.log(parent);
+		}
+		
+		
+		if (form != undefined && form.method == "post")
+			form.addEventListener('submit', track, false);
+
+	}
+
 	return yet;
 
 })(YpEventTracker || {});
-
-
-// console.log( 'illwer' );
-// console.log( yet.parseParams("refactor.js?fn=contact_form&furl=/forms/post.php")) ;
-	
-
 
 function run () {
 	 // Non-Microsoft browsers

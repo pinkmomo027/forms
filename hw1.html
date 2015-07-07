@@ -2,7 +2,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="hw1.css">
 		<script src="hw1.js"></script>
-		<script src="refactor.js"></script>
+		<script src="refactor.js?fn=myForm"></script>
 	</head>
 
 	<body>
@@ -24,7 +24,23 @@
 				talk to ws
 			</button>
 		</div>
+
 		<div class='container'>
+			<form name="myForm" action="index.php" method="post">
+			First name: <input type="text" name="fname"><br>
+			Last name: <input type="text" name="lname"><br>
+			<br>
+
+			<input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+			<input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+			<br>
+			<input type="submit" id="submit" value="Send form data!">
+			</form>
+
+<p>Notice that the JavaScript in the head section uses the name of the form to specify which form to submit.</p>
+		</div>
+
+		<div class='container' style="display:none;">
 			<div class='error-container underlay' id='error'>
 				<a class='pull-right' id='close-error'>close [x]</a>
 				<h3>Validation Errors</h3>
